@@ -11,6 +11,9 @@ public class TestMergeSort {
 
 		MergeSort m = new MergeSort();
 		
+		System.out.println("MergeSort");
+		System.out.println();
+		
 		int[] valores = { 3, 8, 7, 5, 2, 1, 9, 6, 4 };
         int longitud = 9;
 						
@@ -24,7 +27,7 @@ public class TestMergeSort {
 		}					
 		
 		System.out.println();
-		System.out.println("Valores ordenado");
+		System.out.println("Valores ordenados por MergeSort");
 		System.out.println(Arrays.toString(valores));
 		
 	}

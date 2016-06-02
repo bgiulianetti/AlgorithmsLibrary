@@ -9,6 +9,9 @@ public class TestBusquedaBinaria {
 		
 		BusquedaBinaria b = new BusquedaBinaria();
 		
+		System.out.println("Búsqueda Binaria");
+		System.out.println();
+		
 		int[] valores = { 3,6,9,1,7,2,5,8,4};
 		//int[] valores = { 1,2,3,4,5,6,7,8,9};
         int longitud = 9;

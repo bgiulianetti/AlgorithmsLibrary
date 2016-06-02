@@ -10,6 +10,9 @@ public class TestQuickSort {
 
 		QuickSort q = new QuickSort();
 		
+		System.out.println("QuickSort");
+		System.out.println();
+		
 		int[] valores = { 3, 8, 7, 5, 2, 1, 9, 6, 4 };
         int longitud = 9;
 						
@@ -23,7 +26,7 @@ public class TestQuickSort {
 		}					
 		
 		System.out.println();
-		System.out.println("Valores ordenado");
+		System.out.println("Valores ordenados por QuickSort");
 		System.out.println(Arrays.toString(valores));
 
 	}
