@@ -249,7 +249,7 @@ public class Grafo {
 			aux.sacar(el);
 		}
 		
-		System.out.println("Vertices	CantAristas");
+		System.out.println("Vertice 	CantAristas");
 		while (!auxcola.colaPrioridadVacia()){
 			System.out.println("   "+ auxcola.prioridad()+"   		     "+ auxcola.primero());
 			auxcola.desacolarPrioridad();
@@ -275,7 +275,7 @@ public class Grafo {
 			}
 			aux2.sacar(verticeaux);
 		}
-		System.out.println("Grado del vertice " + vertice + ", de grado " + cantactual);
+		System.out.println("El vértice " + vertice + " tiene grado: " + cantactual);
 	}
 	
 	
@@ -311,7 +311,7 @@ public class Grafo {
 			aux2 = a.Vertices();
 			aux.sacar(el);
 		}
-		System.out.println("Vertice con mayor grado: " + arfinal + ", de grado " + cantfinal);
+		System.out.println("El vertice con mayor grado es: " + arfinal + " de grado " + cantfinal);
 	}
 	
 }

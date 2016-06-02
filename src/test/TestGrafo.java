@@ -34,6 +34,7 @@ public class TestGrafo {
 		g.verticemayorgrado(g);
 		System.out.println("--------------------------------");
 		g.aristasdevertice(g);
+				
 	}
 
 }
