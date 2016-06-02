@@ -9,9 +9,10 @@ public class TestBusquedaBinaria {
 		
 		BusquedaBinaria b = new BusquedaBinaria();
 		
-		int[] valores = { 3, 8, 7, 5, 2, 1, 9, 6, 4 };
+		int[] valores = { 3,6,9,1,7,2,5,8,4};
+		//int[] valores = { 1,2,3,4,5,6,7,8,9};
         int longitud = 9;
-        int valor = 9;
+        int valor = 7;
         boolean flag = false;
 		
 		try {
@@ -21,6 +22,12 @@ public class TestBusquedaBinaria {
 		}
 		
 		System.out.println("El flag dio: " +flag);
+		
+//		int n = 9;
+//		b.ordenarArreglo(valores, n);
+//		b.muestra(valores);
+		
+		
 	}
 
 }
