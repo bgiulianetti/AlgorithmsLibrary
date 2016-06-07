@@ -1,9 +1,8 @@
 package implementaciones;
 
-
-
-
 public class Grafo {
+	
+	int CantidadVertices;
 	
 	class NodoGrafo{
 		int nodo ;
@@ -21,16 +20,17 @@ public class Grafo {
 	
 	public void InicializarGrafo() {
 		origen = null;
-
+		CantidadVertices = 0;
 	}
 
-	public void AgregarVertice(int v) {
+	public void AgregarVertice(int vertice) {
 		//El vertice se inserta al inicio de la lista de nodos
 		NodoGrafo aux = new NodoGrafo();
-		aux.nodo = v;
+		aux.nodo = vertice;
 		aux.arista = null ;
 		aux.sigNodo = origen;
 		origen = aux;
+		CantidadVertices++;
 	}
 
 	public void EliminarVertice(int v) {
@@ -209,7 +209,6 @@ public class Grafo {
 		return estaAislado;
 	}
 	
-	
 	// Algoritmo 
 	// TODO: recibe un Grafo G y devuelva el valor del vértice de mayor grado. 
 	// El grado de un vértice es la cantidad de aristas entrantes menos la cantidad de aristas salientes
@@ -221,24 +220,29 @@ public class Grafo {
 	// Algoritmo 
 	// TODO: - Recibimos un grafo y un vertice y decimos que grado tiene (aristas salientes - aristas entrantes)
 	
-	public void aristasdevertice(Grafo a) {
+	public void aristasdevertice(Grafo a) 
+	{
 		ConjuntoDinamico aux = a.Vertices();
 		ConjuntoDinamico aux2 = a.Vertices();
 		ColaPrioridadDinamica auxcola= new ColaPrioridadDinamica();
 		auxcola.inicializarColaPrioridad();
 		
-		while(!aux.conjuntoVacio()){
+		while(!aux.conjuntoVacio())
+		{
 			int el=aux.elegir();
 			int cantactual=0;
 			
-			while(!aux2.conjuntoVacio()){
+			while(!aux2.conjuntoVacio())
+			{
 				int elaux= aux2.elegir();
 				
 				if (el!=elaux){
-					if (a.ExisteArista(el, elaux)==true){
+					if (a.ExisteArista(el, elaux)==true)
+					{
 						cantactual=cantactual+1;
 					}
-					if (a.ExisteArista(elaux, el)==true){
+					if (a.ExisteArista(elaux, el)==true)
+					{
 						cantactual=cantactual+1;
 					}
 				}
@@ -255,7 +259,6 @@ public class Grafo {
 			auxcola.desacolarPrioridad();
 		}
 	}
-	
 	
 	public void gradovertice(Grafo a, int vertice) {
 		
@@ -277,7 +280,6 @@ public class Grafo {
 		}
 		System.out.println("El vértice " + vertice + " tiene grado: " + cantactual);
 	}
-	
 	
 	public void verticemayorgrado(Grafo a) {
 		
@@ -314,4 +316,8 @@ public class Grafo {
 		System.out.println("El vertice con mayor grado es: " + arfinal + " de grado " + cantfinal);
 	}
 	
+	public int GetCantidadDeVertices()
+	{
+		return CantidadVertices;
+	}
 }
