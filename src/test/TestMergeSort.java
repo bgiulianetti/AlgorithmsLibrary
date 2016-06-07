@@ -13,23 +13,41 @@ public class TestMergeSort {
 		
 		System.out.println("MergeSort");
 		System.out.println();
-		
-		int[] valores = { 3, 8, 7, 5, 2, 1, 9, 6, 4 };
-        int longitud = 9;
-						
+		System.out.println("caso 1");
+		int[] valores = { 3, 7, 8, 2, 1, 5, 9, 6, 4 };
+		int[] orden= new int[valores.length];						
 		System.out.println("Valores sin ordenar");
 		System.out.println(Arrays.toString(valores));
 		
 		try {
-			m.mergeSort(valores, 0, longitud-1);
+			
+			orden=m.mergeSort(valores);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}					
 		
 		System.out.println();
 		System.out.println("Valores ordenados por MergeSort");
-		System.out.println(Arrays.toString(valores));
+		System.out.println(Arrays.toString(orden));
+
 		
+		System.out.println("caso 2");
+		int[] valores1 = { 3, 7, 8, 5, 9, 6, 10, 4, 20, 2, 12, 1, 14, 30, 16, 22, 13, 19 };
+		int[] orden1= new int[valores1.length];						
+		System.out.println("Valores sin ordenar");
+		System.out.println(Arrays.toString(valores1));
+		
+		try {
+			
+			orden1=m.mergeSort(valores1);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}					
+		
+		System.out.println();
+		System.out.println("Valores ordenados por MergeSort");
+		System.out.println(Arrays.toString(orden1));
+
 	}
 
 }

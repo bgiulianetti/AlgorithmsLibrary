@@ -4,47 +4,69 @@ public class MergeSort {
 
 	public MergeSort(){};
 	
+	
+	
+	
+	
+	public static int[] mergeSort(int valores[]) throws Exception{
 
-	public static void mergeSort(int valores[], int inicio, int fin) throws Exception{
-		if(inicio<fin){
-			int mitad = (inicio+fin)/2;
-			mergeSort(valores, inicio, mitad);
-			mergeSort(valores, (mitad+1), fin);
-			merge(valores, inicio, (mitad+1), fin);
+		int tamano; 
+		tamano=valores.length;
+		if (valores.length==1){
+			System.out.println("Caso Base");
+			return valores;
+		}else{
+			
+			int mitad = tamano/ 2;
+		    int parte1[] = new int[mitad];
+		    int m1[] = new int[mitad];
+		    int parte2[] = new int[tamano - mitad];
+		    int m2[] = new int[tamano - mitad];
+		    // Copio primera parte
+		    for (int i = 0; i < mitad; i++)
+		    {	parte1[i] = valores[i];
+		    }
+		    // Copio segunda parte
+		    for (int i = mitad; i < tamano; i++)
+		    {	parte2[i - mitad] = valores[i];
+		    }	
+			System.out.println("Division");
+			m1=mergeSort(parte1);
+			System.out.println("Division");
+			m2=mergeSort(parte2);
+			System.out.println("Union");
+			return merge(m1,m2);
 		}
 	}
-	
-	public static void merge(int valores[], int inicio, int mitad, int fin) throws Exception{
-		
-		int [] resultado = new int[valores.length];
-		int i, j, k, elementos;
-		k = (mitad - 1);
-		j = inicio;
-		elementos = (fin-inicio+ 1);
-		
-		while ((inicio <= k) && (mitad <= fin)){		
-			if (valores[inicio] <= valores[mitad]){
-				resultado[j++] = valores[inicio++];
-			}			
-			else{
-				resultado[j++] = valores[mitad++];
-			}			
+	public static int[] merge(int s1[], int s2[]) throws Exception{
+		int i1=0;
+		int i2=0;
+		int i=0;
+		int [] union= new int[s1.length+s2.length];
+		while (i1<s1.length && i2<s2.length){
+			if(s1[i1]<s2[i2]){
+				union[i]=s1[i1];
+				i1++;
+			}else{
+				union[i]=s2[i2];
+				i2++;
+			}
+			i++;
 		}
-
-		while (inicio <= k){
-			resultado[j++] = valores[inicio++];
+		if(i1<s1.length){
+			while (i1<s1.length){
+				union[i]=s1[i1];
+				i1++;
+				i++;
+			}
 		}
-			
-		while (mitad <= fin){
-			resultado[j++] = valores[mitad++];
+		if(i2<s2.length){
+			while (i2<s2.length){
+				union[i]=s2[i2];
+				i2++;
+				i++;
+			}
 		}
-			
-		for (i = 0; i < elementos; i++){		
-			valores[fin] = resultado[fin];
-			fin--;
-		}
-		
-	}				 	 	 
-
-	
+		return union;
+	}
 }
