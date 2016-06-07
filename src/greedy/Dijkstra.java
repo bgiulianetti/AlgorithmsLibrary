@@ -5,12 +5,11 @@ import implementaciones.Grafo;
 
 public class Dijkstra {
 
-	public Dijkstra(){};
-	
-	public static Grafo dijkstra(Grafo g, int origen) throws Exception{
+	public static String[] dijkstra(Grafo g, int origen) throws Exception{
 		
 		int vertice, aux_vertice, mejor_vertice, mejor_distancia;
-		
+		String[] caminoMinimo = new String[g.GetCantidadDeVertices()- 1];
+		int indiceCaminoMinimo = 0;
 		Grafo distanciaMinimas = new Grafo();
 		
 		distanciaMinimas.InicializarGrafo();
@@ -24,8 +23,11 @@ public class Dijkstra {
 			vertice = vertices.elegir();
 			vertices.sacar(vertice);
 			distanciaMinimas.AgregarVertice(vertice);
-			if(g.ExisteArista(origen, vertice)){
+			if(g.ExisteArista(origen, vertice))
+			{
 				distanciaMinimas.AgregarArista(origen, vertice, g.PesoArista(origen, vertice));
+				caminoMinimo[indiceCaminoMinimo] = "Desde=" + origen + " Hasta=" + vertice + " Peso=" + g.PesoArista(origen, vertice);
+				indiceCaminoMinimo++;
 			}
 		}
 		
@@ -50,7 +52,7 @@ public class Dijkstra {
 						&& ( mejor_distancia == 0 
 						|| (mejor_distancia > distanciaMinimas.PesoArista (origen , aux_vertice ))))){
 					mejor_distancia = distanciaMinimas.PesoArista(origen, aux_vertice);
-					mejor_vertice = aux_vertice;					
+					mejor_vertice = aux_vertice;	
 				}
 				
 			}
@@ -67,13 +69,25 @@ public class Dijkstra {
 					aux_pendientes.sacar(aux_vertice);
 					pendientes.agregar(aux_vertice);
 					
-					if(g.ExisteArista(vertice, aux_vertice)){
-						if(!distanciaMinimas.ExisteArista(origen, aux_vertice)){
-							distanciaMinimas.AgregarArista(origen, aux_vertice, distanciaMinimas.PesoArista(origen, vertice)+g.PesoArista(vertice, aux_vertice));							
+					if(g.ExisteArista(vertice, aux_vertice))
+					{
+						if(!distanciaMinimas.ExisteArista(origen, aux_vertice))
+						{
+							int vertideOrigen = origen;
+							int verticeDestino = aux_vertice;
+							int pesoEntreVertices = distanciaMinimas.PesoArista(origen, vertice) + g.PesoArista(vertice, aux_vertice);
+							distanciaMinimas.AgregarArista(vertideOrigen, verticeDestino, pesoEntreVertices);
+							caminoMinimo[indiceCaminoMinimo] = "Desde=" + vertideOrigen + " Hasta=" + verticeDestino + " Peso=" + pesoEntreVertices;
+							indiceCaminoMinimo++;
 						}
-						else{
-							if(distanciaMinimas.PesoArista(origen, aux_vertice) > distanciaMinimas.PesoArista(origen, vertice)+g.PesoArista(vertice, aux_vertice)){
-								distanciaMinimas.AgregarArista(origen, aux_vertice, distanciaMinimas.PesoArista(origen, vertice)+g.PesoArista(vertice, aux_vertice));
+						else
+						{
+							if(distanciaMinimas.PesoArista(origen, aux_vertice) > distanciaMinimas.PesoArista(origen, vertice)+g.PesoArista(vertice, aux_vertice))
+							{
+								int vertideOrigen = origen;
+								int verticeDestino = aux_vertice;
+								int pesoEntreVertices = distanciaMinimas.PesoArista(origen, vertice)+g.PesoArista(vertice, aux_vertice);
+								distanciaMinimas.AgregarArista(vertideOrigen, verticeDestino, pesoEntreVertices);
 							}
 						}
 					}					
@@ -81,8 +95,8 @@ public class Dijkstra {
 			}
 			
 		}
-				
-		return distanciaMinimas;						
+		//return distanciaMinimas;
+		return caminoMinimo;
 	}
-	
+
 }
