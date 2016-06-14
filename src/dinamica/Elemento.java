@@ -6,11 +6,10 @@ public class Elemento {
     int valor; 
     double beneficio; 
      
-    public Elemento(){
-    	
-        peso = 0; 
-        valor = 0; 
-        beneficio = -1; 
+    public Elemento(){    	
+        this.peso = 0; 
+        this.valor = 0; 
+        this.beneficio = -1; 
     } 
      
     public Elemento(int peso, int valor){ 

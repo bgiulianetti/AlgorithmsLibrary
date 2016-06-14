@@ -1,5 +1,5 @@
 package backtracking;
 
-public class Mochila {
+public class EspacioBt {
 
 }
