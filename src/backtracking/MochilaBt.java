@@ -46,7 +46,8 @@ public class MochilaBt {
             valorMochila+=e.valor;
         }
         
-        System.out.println("------");
+        System.out.println("-----------------------------------------");
+        System.out.println();
         System.out.printf("Peso  = %,12.2f %n", pesoMochila);
         System.out.printf("Valor = %,12.2f %n", valorMochila);
     }
